@@ -140,6 +140,38 @@ class FSMath{
                              double PxP4, double PyP4, double PzP4, double EnP4);
 
 // ***************************************
+//  Mandelstam variables
+//      return Mandelstam t, s, and u for P1, P2, P3, and P4.
+// ***************************************
+
+    static double mandelstam_t(double PxP1, double PyP1, double PzP1, double EnP1,
+                               double PxP2, double PyP2, double PzP2, double EnP2);
+
+    static double mandelstam_s(double PxP1, double PyP1, double PzP1, double EnP1,
+                               double PxP2, double PyP2, double PzP2, double EnP2);
+
+    static double mandelstam_u(double PxP1, double PyP1, double PzP1, double EnP1,
+                               double PxP2, double PyP2, double PzP2, double EnP2);
+
+// ***************************************
+//  Derived Mandelstam variables
+//      return Mandelstam t0 and tprime for P1, P2, P3, P4, P5, and P6.
+// ***************************************
+
+    static double mandelstam_t0(double PxP1, double PyP1, double PzP1, double EnP1,
+                                double PxP2, double PyP2, double PzP2, double EnP2,
+                                double PxP3, double PyP3, double PzP3, double EnP3,
+                                double PxP4, double PyP4, double PzP4, double EnP4,
+                                double PxP5, double PyP5, double PzP5, double EnP5,
+                                double PxP6, double PyP6, double PzP6, double EnP6);
+
+    static double mandelstam_tprime(double PxP1, double PyP1, double PzP1, double EnP1,
+                                    double PxP2, double PyP2, double PzP2, double EnP2,
+                                    double PxP3, double PyP3, double PzP3, double EnP3,
+                                    double PxP4, double PyP4, double PzP4, double EnP4);
+
+
+// ***************************************
 //  additional interfaces to the functions above
 // ***************************************
 
@@ -232,6 +264,40 @@ class FSMath{
                                 P2.Px(), P2.Py(), P2.Pz(), P2.E(),
                                 P3.Px(), P3.Py(), P3.Pz(), P3.E(),
                                 P4.Px(), P4.Py(), P4.Pz(), P4.E());}
+    static double mandelstam_t(TLorentzVector& P1,
+                               TLorentzVector& P2){
+      return FSMath::mandelstam_t(P1.Px(), P1.Py(), P1.Pz(), P1.E(),
+                                  P2.Px(), P2.Py(), P2.Pz(), P2.E());}
+    static double mandelstam_s(TLorentzVector& P1,
+                               TLorentzVector& P2){
+      return FSMath::mandelstam_s(P1.Px(), P1.Py(), P1.Pz(), P1.E(),
+                                  P2.Px(), P2.Py(), P2.Pz(), P2.E());}
+    static double mandelstam_u(TLorentzVector& P1,
+                               TLorentzVector& P2){
+      return FSMath::mandelstam_u(P1.Px(), P1.Py(), P1.Pz(), P1.E(),
+                                  P2.Px(), P2.Py(), P2.Pz(), P2.E());}
+    static double mandelstam_t0(TLorentzVector& P1,
+                                TLorentzVector& P2,
+                                TLorentzVector& P3,
+                                TLorentzVector& P4,
+                                TLorentzVector& P5,
+                                TLorentzVector& P6){
+      return FSMath::mandelstam_t0(P1.Px(), P1.Py(), P1.Pz(), P1.E(),
+                                   P2.Px(), P2.Py(), P2.Pz(), P2.E(),
+                                   P3.Px(), P3.Py(), P3.Pz(), P3.E(),
+                                   P4.Px(), P4.Py(), P4.Pz(), P4.E(),
+                                   P5.Px(), P5.Py(), P5.Pz(), P5.E(),
+                                   P6.Px(), P6.Py(), P6.Pz(), P6.E());}
+    static double mandelstam_tprime(TLorentzVector& P1,
+                                    TLorentzVector& P2,
+                                    TLorentzVector& P3,
+                                    TLorentzVector& P4){
+      return FSMath::mandelstam_tprime(P1.Px(), P1.Py(), P1.Pz(), P1.E(),
+                                       P2.Px(), P2.Py(), P2.Pz(), P2.E(),
+                                       P3.Px(), P3.Py(), P3.Pz(), P3.E(),
+                                       P4.Px(), P4.Py(), P4.Pz(), P4.E());}
+
+
 
 // ***************************************
 //  D-FUNCTIONS, ETC.
