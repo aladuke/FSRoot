@@ -808,6 +808,33 @@ FSTree::makeStandardDefinitions(){
                                     "PxP[J],PyP[J],PzP[J],EnP[J],"
                                     "PxP[M],PyP[M],PzP[M],EnP[M],"
                                     "PxP[N],PyP[N],PzP[N],EnP[N])");
+
+    defineMacro("MANDELSTAM_T", 2,  "FSMath::mandelstam_t("
+                                    "PxP[I],PyP[I],PzP[I],EnP[I],"
+                                    "PxP[J],PyP[J],PzP[J],EnP[J])");
+
+    defineMacro("MANDELSTAM_S", 2,  "FSMath::mandelstam_s("
+                                    "PxP[I],PyP[I],PzP[I],EnP[I],"
+                                    "PxP[J],PyP[J],PzP[J],EnP[J])");
+
+    defineMacro("MANDELSTAM_U", 2,  "FSMath::mandelstam_u("
+                                    "PxP[I],PyP[I],PzP[I],EnP[I],"
+                                    "PxP[J],PyP[J],PzP[J],EnP[J])");
+
+    defineMacro("MANDELSTAM_t0", 6,  "FSMath::mandelstam_t0("
+                                    "PxP[I],PyP[I],PzP[I],EnP[I],"
+                                    "PxP[J],PyP[J],PzP[J],EnP[J],"
+                                    "PxP[M],PyP[M],PzP[M],EnP[M],"
+                                    "PxP[N],PyP[N],PzP[N],EnP[N],"
+                                    "PxP[K],PyP[K],PzP[K],EnP[K],"
+                                    "PxP[L],PyP[L],PzP[L],EnP[L])");
+
+    defineMacro("MANDELSTAM_tprime", 4,"FSMath::mandelstam_tprime("
+                                    "PxP[I],PyP[I],PzP[I],EnP[I],"
+                                    "PxP[J],PyP[J],PzP[J],EnP[J],"
+                                    "PxP[M],PyP[M],PzP[M],EnP[M],"
+                                    "PxP[N],PyP[N],PzP[N],EnP[N])");
+
   }
 }
 
