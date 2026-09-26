@@ -305,6 +305,58 @@ FSMath::vanHovephi(double PxP1, double PyP1, double PzP1, double EnP1,
 }
 
 // ***************************************
+//  Mandelstam variables
+//    return t, s, and u
+// ***************************************
+
+double
+FSMath::mandelstam_t(double PxP1, double PyP1, double PzP1, double EnP1,
+                    double PxP2, double PyP2, double PzP2, double EnP2){
+  double mandt = -1.0*(pow((EnP1-EnP2),2) - pow((PxP1-PxP2),2) - pow((PyP1-PyP2),2) - pow((PzP1-PzP2),2) );
+  return mandt;
+}
+
+double
+FSMath::mandelstam_s(double PxP1, double PyP1, double PzP1, double EnP1,
+                    double PxP2, double PyP2, double PzP2, double EnP2){
+  double mands = -1.0*(pow((EnP1+EnP2),2) - pow((PxP1+PxP2),2) - pow((PyP1+PyP2),2) - pow((PzP1+PzP2),2) );
+  return mands;
+}
+
+double
+FSMath::mandelstam_u(double PxP1, double PyP1, double PzP1, double EnP1,
+                    double PxP2, double PyP2, double PzP2, double EnP2){
+  double mandu = -1.0*(pow((EnP1-EnP2),2) - pow((PxP1-PxP2),2) - pow((PyP1-PyP2),2) - pow((PzP1-PzP2),2) );
+  return mandu;
+}
+
+// ***************************************
+//  Derived Mandelstam variables
+//    return t0 and tprime
+// ***************************************
+
+double
+FSMath::mandelstam_t0(double PxP1, double PyP1, double PzP1, double EnP1,
+                      double PxP2, double PyP2, double PzP2, double EnP2,
+                      double PxP3, double PyP3, double PzP3, double EnP3,
+                      double PxP4, double PyP4, double PzP4, double EnP4,
+                      double PxP5, double PyP5, double PzP5, double EnP5,
+                      double PxP6, double PyP6, double PzP6, double EnP6){
+  double mandt0 = ;
+  return mandt0;
+}
+
+double
+FSMath::mandelstam_tprime(double PxP1, double PyP1, double PzP1, double EnP1,
+                          double PxP2, double PyP2, double PzP2, double EnP2,
+                          double PxP3, double PyP3, double PzP3, double EnP3,
+                          double PxP4, double PyP4, double PzP4, double EnP4){
+  double mandtprime = ;
+  return mandtprime;
+}
+
+
+// ***************************************
 //  D-FUNCTIONS, ETC.
 // ***************************************
 
