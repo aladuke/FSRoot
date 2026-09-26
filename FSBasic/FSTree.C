@@ -882,8 +882,8 @@ FSTree::defineMacro(TString macroName, int numFourVectors, TString macro){
   macro     = FSString::removeWhiteSpace(macro);
   makeStandardDefinitions();
   if ((macroName == "") || (macro == "")) return;
-  if ((numFourVectors < 1) || (numFourVectors > 4)){
-    cout << "FSTree::defineMacro WARNING: numFourVectors should be 1 to 4, nothing defined" << endl;
+  if ((numFourVectors < 1) || (numFourVectors > 6)){
+    cout << "FSTree::defineMacro WARNING: numFourVectors should be 1 to 6, nothing defined" << endl;
     return;
   }
   pair<TString,int> macroNamePair(macroName,numFourVectors);
@@ -904,6 +904,14 @@ FSTree::defineMacro(TString macroName, int numFourVectors, TString macro){
   }
   if ((numFourVectors >= 4) && (!macro.Contains("[N]"))){
     cout << "FSTree::defineMacro WARNING: macro named " << macroName << " should contain [N]" << endl;
+    return;
+  }
+  if ((numFourVectors >= 5) && (!macro.Contains("[K]"))){
+    cout << "FSTree::defineMacro WARNING: macro named " << macroName << " should contain [K]" << endl;
+    return;
+  }
+  if ((numFourVectors >= 6) && (!macro.Contains("[L]"))){
+    cout << "FSTree::defineMacro WARNING: macro named " << macroName << " should contain [L]" << endl;
     return;
   }
   m_mapDefinedMacros[macroNamePair] = macro;
