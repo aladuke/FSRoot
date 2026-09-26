@@ -311,22 +311,22 @@ FSMath::vanHovephi(double PxP1, double PyP1, double PzP1, double EnP1,
 
 double
 FSMath::mandelstam_t(double PxP1, double PyP1, double PzP1, double EnP1,
-                    double PxP2, double PyP2, double PzP2, double EnP2){
-  double mandt = -1.0*(pow((EnP1-EnP2),2) - pow((PxP1-PxP2),2) - pow((PyP1-PyP2),2) - pow((PzP1-PzP2),2) );
+                     double PxP2, double PyP2, double PzP2, double EnP2){
+  double mandt = (pow((EnP1-EnP2),2) - pow((PxP1-PxP2),2) - pow((PyP1-PyP2),2) - pow((PzP1-PzP2),2) );
   return mandt;
 }
 
 double
 FSMath::mandelstam_s(double PxP1, double PyP1, double PzP1, double EnP1,
-                    double PxP2, double PyP2, double PzP2, double EnP2){
-  double mands = -1.0*(pow((EnP1+EnP2),2) - pow((PxP1+PxP2),2) - pow((PyP1+PyP2),2) - pow((PzP1+PzP2),2) );
+                     double PxP2, double PyP2, double PzP2, double EnP2){
+  double mands = (pow((EnP1+EnP2),2) - pow((PxP1+PxP2),2) - pow((PyP1+PyP2),2) - pow((PzP1+PzP2),2) );
   return mands;
 }
 
 double
 FSMath::mandelstam_u(double PxP1, double PyP1, double PzP1, double EnP1,
-                    double PxP2, double PyP2, double PzP2, double EnP2){
-  double mandu = -1.0*(pow((EnP1-EnP2),2) - pow((PxP1-PxP2),2) - pow((PyP1-PyP2),2) - pow((PzP1-PzP2),2) );
+                     double PxP2, double PyP2, double PzP2, double EnP2){
+  double mandu = (pow((EnP1-EnP2),2) - pow((PxP1-PxP2),2) - pow((PyP1-PyP2),2) - pow((PzP1-PzP2),2) );
   return mandu;
 }
 
@@ -335,15 +335,20 @@ FSMath::mandelstam_u(double PxP1, double PyP1, double PzP1, double EnP1,
 //    return t0 and tprime
 // ***************************************
 
+double trianglefunct(double x, double y, double z){
+  double value = x*x + y*y + z*z - 2*x*y - 2*x*z - 2*y*z;
+return value; }
+
 double
-FSMath::mandelstam_t0(double PxP1, double PyP1, double PzP1, double EnP1,
-                      double PxP2, double PyP2, double PzP2, double EnP2,
-                      double PxP3, double PyP3, double PzP3, double EnP3,
-                      double PxP4, double PyP4, double PzP4, double EnP4,
-                      double PxP5, double PyP5, double PzP5, double EnP5,
-                      double PxP6, double PyP6, double PzP6, double EnP6){
-  double mandt0 = ;
-  return mandt0;
+FSMath::mandelstam_tzero(double PxP1, double PyP1, double PzP1, double EnP1,
+                         double PxP2, double PyP2, double PzP2, double EnP2,
+                         double PxP3, double PyP3, double PzP3, double EnP3,
+                         double PxP4, double PyP4, double PzP4, double EnP4){
+  double mands = (pow((EnP1+EnP2),2) - pow((PxP1+PxP2),2) - pow((PyP1+PyP2),2) - pow((PzP1+PzP2),2) );
+  double m2_proton = (pow(EnP3,2) - pow(PxP3,2) - pow(PyP3,2) - pow(PzP3,2));
+  double m2_meson  = (pow(EnP4,2) - pow(PxP4,2) - pow(PyP4,2) - pow(PzP4,2));
+  double mandtzero = 0.5*(m2_proton/mands-1)*(mands + m2_meson - m2_proton - pow(trianglefunct(mands,m2_meson,m2_proton),0.5)) - m2_meson);
+  return mandtzero;
 }
 
 double
@@ -351,7 +356,12 @@ FSMath::mandelstam_tprime(double PxP1, double PyP1, double PzP1, double EnP1,
                           double PxP2, double PyP2, double PzP2, double EnP2,
                           double PxP3, double PyP3, double PzP3, double EnP3,
                           double PxP4, double PyP4, double PzP4, double EnP4){
-  double mandtprime = ;
+  double mands = (pow((EnP1+EnP2),2) - pow((PxP1+PxP2),2) - pow((PyP1+PyP2),2) - pow((PzP1+PzP2),2) );
+  double mandt = (pow((EnP1-EnP3),2) - pow((PxP1-PxP3),2) - pow((PyP1-PyP3),2) - pow((PzP1-PzP3),2) );
+  double m2_proton = (pow(EnP3,2) - pow(PxP3,2) - pow(PyP3,2) - pow(PzP3,2));
+  double m2_meson  = (pow(EnP4,2) - pow(PxP4,2) - pow(PyP4,2) - pow(PzP4,2));
+  double mandtzero = 0.5*(m2_proton/mands-1)*(mands + m2_meson - m2_proton - pow(trianglefunct(mands,m2_meson,m2_proton),0.5)) - m2_meson);
+  double mandtprime = mandt - mandtzero;
   return mandtprime;
 }
 
